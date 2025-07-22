@@ -17,6 +17,23 @@ bs_price <- function(type, S0, K, T, r, sigma) {
   }
 }
 
-# Quick tests:
-cat("Call:", bs_price("call", 100, 100, 1, 0.05, 0.2), "\n")
-cat("Put: ", bs_price("put",  100, 100, 1, 0.05, 0.2), "\n")
+cat("Enter option type ('call' or 'put'): ")
+opt_type <- readline()
+
+cat("Enter S0 (current stock price): ")
+S0 <- as.numeric(readline())
+
+cat("Enter K (strike price): ")
+K <- as.numeric(readline())
+
+cat("Enter T (time to maturity, in years): ")
+T <- as.numeric(readline())
+
+cat("Enter r (risk-free rate, decimal): ")
+r <- as.numeric(readline())
+
+cat("Enter sigma (volatility, decimal): ")
+sigma <- as.numeric(readline())
+
+price <- bs_price(opt_type, S0, K, T, r, sigma)
+cat(sprintf("\nBlack–Scholes %s price: %.4f\n", tolower(opt_type), price))
